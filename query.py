@@ -13,7 +13,6 @@ hdr = {"X-TBA-App-Id": "frc694:testing-app:v01"}
 #    "location": Longform locality address,
 #    "country_name": Name of team's country,
 #    "rookie_year": Team's rookie year"}
-
 def getTeamData(teamNumber):
     conn = httplib.HTTPConnection(domain)
     path = "team/frc"+str(teamNumber)
@@ -86,4 +85,3 @@ def getMatchScore(match):
             "red": match["score_breakdown"]["red"]["total_points"]
     }
     
-print getEventData(2015,"nyny")
