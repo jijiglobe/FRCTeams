@@ -84,4 +84,26 @@ def getMatchScore(match):
     return {"blue": match["score_breakdown"]["blue"]["total_points"],
             "red": match["score_breakdown"]["red"]["total_points"]
     }
+
+#returns list of events. each event is a dict as follows:
+#    {"code": event code(can be used to pull event data in other functions),
+#    "short_name": short name of event,
+#    "event_type-string": string defining event type,
+#    "event_district-string": string defining disctrict of event,
+#    "location": Longform address of city,
+#    "venue_address": Longform address of the venue,
+#    "website": event website string,
+#    "teams": dictionary of teams at event(formatted as above in getTeamData),
+#    "matches": dictionary of match data(formatted as below in getMatchData),
+#    "alliances": Json array of alliances:
+#                 "picks": [captain,team2,team3]
+#                 "declines": [team1,team2, team3]
+def getEventList(year):
+    conn = httplib.HTTPConnection(domain)
+    path = "events/"+str(year)
+    conn.request("GET",api % path ,headers = hdr)
+    r = conn.getresponse()
+    answer = r.read().decode('utf-8')
+    final = json.loads(answer)
+    return final
     
