@@ -17,6 +17,7 @@ def getAverageScore(team, year, code):
                 count+=1
     return (0.0+ans)/(0.0+count)
 
+#calculates a team's qualification score at an event
 def getAverageQualScore(team, year, code):
     matches = query.getAllMatches(year,code)
     teamkey = "frc"+str(team)
@@ -33,7 +34,8 @@ def getAverageQualScore(team, year, code):
                     ans+= x["alliances"]["red"]["score"]
                     count+=1
     return (0.0+ans)/(0.0+count)
-        
+
+#calculates a team's average elimination score at an event        
 def getAverageElimScore(team, year, code):
     matches = query.getAllMatches(year,code)
     teamkey = "frc"+str(team)
@@ -51,5 +53,3 @@ def getAverageElimScore(team, year, code):
                     count+=1
     return (0.0+ans)/(0.0+count)
 
-
-print getAverageElimScore(694,2015,"nyny")
