@@ -1,7 +1,9 @@
 import query
 
-#Calculates a team's average score at event with code: <code> in <year>
 def getAverageScore(team, year, code):
+    """
+    Calculates a team's average score at event with code: <code> in <year>
+    """
     matches = query.getAllMatches(year,code)
     teamkey = "frc"+str(team)
     ans = 0
@@ -17,8 +19,10 @@ def getAverageScore(team, year, code):
                 count+=1
     return (0.0+ans)/(0.0+count)
 
-#calculates a team's qualification score at an event
 def getAverageQualScore(team, year, code):
+    """
+    Calculates a team's qualification score at an event
+    """
     matches = query.getAllMatches(year,code)
     teamkey = "frc"+str(team)
     ans = 0
@@ -53,8 +57,10 @@ def getAverageQualScore(team, year):
                         count+=1
     return (0.0+ans)/(0.0+count)
 
-#calculates a team's average elimination score at an event        
 def getAverageElimScore(team, year, code):
+    """
+    Calculates a team's average elimination score at an event
+    """
     matches = query.getAllMatches(year,code)
     teamkey = "frc"+str(team)
     ans = 0
