@@ -1,6 +1,6 @@
 import query
 
-def getAverageScore(team, year, code):
+def getAverageScoreFromCode(team, year, code):
     """
     Calculates a team's average score at event with code: <code> in <year>
     """
@@ -19,7 +19,7 @@ def getAverageScore(team, year, code):
                 count+=1
     return (0.0+ans)/(0.0+count)
 
-def getAverageQualScore(team, year, code):
+def getAverageQualScoreFromCode(team, year, code):
     """
     Calculates a team's qualification score at an event
     """
