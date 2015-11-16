@@ -20,8 +20,26 @@ def getTeamData(teamNumber):
     path = "team/frc"+str(teamNumber)
     conn.request("GET",api % path ,headers = hdr)
     r = conn.getresponse()
-    answer = r.read().decode('utf-8')
-    return json.loads(answer)
+    try:
+        answer = json.loads(r.read().decode('utf-8'))
+    except:
+        return {"404": "FRC team not found"}
+    return answer
+
+def isExistingTeam(teamNumber):
+    """
+    Returns true if the team specified by teamNumber exists. False otherwise
+    """
+    data = getTeamData(teamNumber)
+    return len(data) > 0 and not '404' in data
+
+def isInactiveTeam(teamNumber):
+    """
+    Returns true if the team specified by teamNumber exists and is inactive.
+    False otherwise
+    """
+    data = getTeamData(teamNumber)
+    return '404' in data or data["name"] == None or data["rookie_year"] == None
 
 def getVideoList(array):
     """
