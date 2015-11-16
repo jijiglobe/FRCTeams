@@ -115,9 +115,24 @@ def getEventList(year):
     """
     conn = httplib.HTTPConnection(domain)
     path = "events/"+str(year)
-    conn.request("GET",api % path ,headers = hdr)
+    conn.request("GET", api % (path), headers = hdr)
     r = conn.getresponse()
     answer = r.read().decode('utf-8')
     final = json.loads(answer)
     return final
- 
+
+def getTeamEventList(team, year):
+    """
+    Returns a list of events in the same format as getEventList(year), but
+    only gives events that were attended by the team specified by the 'team'
+    parameter
+    """
+    conn = httplib.HTTPConnection(domain)
+    path = "team/frc%s/%s/events" % (str(team), str(year))
+    conn.request("GET", api % (path), headers = hdr)
+    r = conn.getresponse()
+    answer = r.read().decode('utf-8')
+    final = json.loads(answer)
+    return final
+
+
