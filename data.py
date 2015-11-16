@@ -94,5 +94,4 @@ def getAverageElimScore(team, year):
                         ans+= x["alliances"]["red"]["score"]
                         count+=1
     return (0.0+ans)/(0.0+count)
-    
-print getAverageQualScore(694,2015)
+

@@ -153,4 +153,3 @@ def getTeamEventList(team, year):
     final = json.loads(answer)
     return final
 
-
