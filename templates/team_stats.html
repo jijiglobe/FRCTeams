@@ -28,13 +28,15 @@
             <div class="site-wrapper-inner">
 
                 <div class="cover-container">
-                    <p class="lead">
-                    <img class="img-responsive center-block"
-                         src="{{ url_for('static',filename = 'first.png') }}"
-                         alt="logo"
-                         width="10%"
-                         height="10%">
-                    </p>
+                    <a href="/">
+		      <p class="lead">
+			<img class="img-responsive center-block"
+                             src="{{ url_for('static',filename = 'first.png') }}"
+                             alt="logo"
+                             width="10%"
+                             height="10%">
+                      </p>
+		    </a>
                     <h1>
                         {{ BASIC["nickname"] }} - FRC Team {{ BASIC["team_number"] }} <br>
 			{{ EVENT["short_name"] }} {{ EVENT["event_type_string"] }} - {{ YEAR }}
