@@ -57,7 +57,7 @@ def getEventData(year, code):
     Returns the requested event data from the requested year as follows:
         "name": name of event,
         "short_name": short name of event,
-        "event_type-string": string defining event type,
+        "event_type_string": string defining event type,
         "event_district-string": string defining disctrict of event,
         "location": Longform address of city,
         "venue_address": Longform address of the venue,
@@ -118,9 +118,9 @@ def getMatchScore(match):
 def getEventList(year):
     """
     Returns list of events. each event is a dict as follows:
-        "code": event code(can be used to pull event data in other functions),
+        "event_code": event code(can be used to pull event data in other functions),
         "short_name": short name of event,
-        "event_type-string": string defining event type,
+        "event_type_string": string defining event type,
         "event_district-string": string defining disctrict of event,
         "location": Longform address of city,
         "venue_address": Longform address of the venue,
