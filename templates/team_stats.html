@@ -36,25 +36,18 @@
                          height="10%">
                     </p>
                     <h1>
-                        {{ BASIC["nickname"] }} - FRC Team {{ BASIC["team_number"] }}
+                        {{ BASIC["nickname"] }} - FRC Team {{ BASIC["team_number"] }} <br>
+			{{ EVENT["short_name"] }} {{ EVENT["event_type_string"] }} - {{ YEAR }}
                     </h1>
+		    <h2>
+		      Team Performance:
+		    </h2>
                     <div style="display: inline-block; text-align: left">
                         <ul>
-                            <li> Sponsors: {{ BASIC["name"] }} </li>
-                            <li> Team Website: <a href="{{ BASIC["website"] }}">{{ BASIC["website"] }}</a></li>
-                            <li> Region: {{ BASIC["locality"] }}, {{ BASIC["region"] }} </li>
-                            <li> Country: {{ BASIC["country_name"] }} </li>
-                            <li> Rookie Year: {{ BASIC["rookie_year"] }} </li>
+                            <li> Average Score: {{ SCORE }} </li>
+			    <li> Average Qualifier Score: {{ QUAL }} </li>
+			    <li> Average Elimination Match Score: {{ ELIM }} </li>
                         </ul>
-			<ul>Events:
-			  {% for key in EVENTS %}
-			  {% for x in EVENTS[key] %}
-			  <li>{{ key }}: <a href="/%40{{ BASIC["team_number"] }}/%40{{ key }}/%40{{ x["event_code"] }}">
-			      {{ x["short_name"] }} {{ x["event_type_string"] }}</a></li>
-			  {% endfor %}
-			  {% endfor %}
-			</ul>
-			  
                     </div>
                     <form method="POST" class="form-inline" role="form">
                         <input type="text" class="form-control"

@@ -153,3 +153,14 @@ def getTeamEventList(team, year):
     final = json.loads(answer)
     return final
 
+def getAllTeamEvents(team):
+    """
+    Returns a dict of lists of events a team attended each year, with the
+    key being an integer representation of the year
+    """
+    year = int(getTeamData(team)["rookie_year"])
+    events = {}
+    while(year<2016):
+        events[year] = getTeamEventList(team, year)
+        year+=1
+    return events

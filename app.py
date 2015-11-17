@@ -8,7 +8,8 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 @app.route("/@<teamNum>", methods=["GET", "POST"])
 @app.route("/@<teamNum>/", methods=["GET", "POST"])
-def main(teamNum=-1):
+@app.route("/@<teamNum>/@<year>/@<code>", methods=["GET","POST"])
+def main(teamNum=-1,year=-1, code=""):
     """
     This is the main method for the web app. If the teamNum variable is not set,
     or is not a valid team number, the web app will render a different page.
@@ -26,8 +27,17 @@ def main(teamNum=-1):
         return render_template("inexistent_team.html", TEAM=teamNum)
     if query.isInactiveTeam(team):
         return render_template("inactive_team.html", TEAM=teamNum)
+    yearNum = int(year)
+    if year!= -1 and code!= "":
+        avgScore = data.getAverageScoreFromCode(team, yearNum, code)
+        avgQual = data.getAverageQualScoreFromCode(team, yearNum, code)
+        avgElim = data.getAverageElimScoreFromCode(team, yearNum, code)
+        teamBasicData = query.getTeamData(team)
+        eventData = query.getEventData(yearNum, code)
+        return render_template("team_stats.html", BASIC=teamBasicData, EVENT=eventData, SCORE=avgScore, QUAL=avgQual, ELIM=avgElim, YEAR=year)
     teamBasicData = query.getTeamData(team)
-    return render_template("team.html", BASIC=teamBasicData)
+    teamEventData = query.getAllTeamEvents(team)
+    return render_template("team.html", BASIC=teamBasicData,EVENTS=teamEventData)
 
 if __name__ == "__main__":
     app.debug = True
