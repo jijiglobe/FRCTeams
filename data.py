@@ -17,6 +17,8 @@ def getAverageScoreFromCode(team, year, code):
             if y == teamkey:
                 ans+= x["alliances"]["red"]["score"]
                 count+=1
+    if count == 0:
+        return 0
     return (0.0+ans)/(0.0+count)
 
 def getAverageQualScoreFromCode(team, year, code):
@@ -37,6 +39,8 @@ def getAverageQualScoreFromCode(team, year, code):
                 if mteam == teamkey:
                     ans += match["alliances"]["red"]["score"]
                     count += 1
+    if count == 0:
+        return 0
     return float(ans)/float(count)
 
 def getAverageQualScore(team, year):
@@ -75,6 +79,8 @@ def getAverageElimScoreFromCode(team, year, code):
                 if mteam == teamkey:
                     ans += match["alliances"]["red"]["score"]
                     count+=1
+    if count==0:
+        return 0
     return float(ans)/float(count)
 
 def getAverageElimScore(team, year):
